@@ -20,7 +20,7 @@ def login_user():
             'password': request.form.get('password'),
         }
         try:
-            r = requests.post('http://127.0.0.1:5000/users/login/',json=data)
+            r = requests.post('https://farm-prroject-api.herokuapp.com/users/login/',json=data)
             # print(r.status_code)
 
             if r.status_code == 200:
@@ -61,7 +61,7 @@ def user_profile():
             print(request.form)
             print(request.files)
             
-            r = requests.put('http://127.0.0.1:5000/users/',data=data,files=request.files,headers={
+            r = requests.put('https://farm-prroject-api.herokuapp.com/users/',data=data,files=request.files,headers={
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
             print(r.status_code)
 
@@ -81,7 +81,7 @@ def user_profile():
         # pass
     else:
         try:
-            r = requests.get('http://127.0.0.1:5000/users/',headers={'Content-Type':'application/json',
+            r = requests.get('https://farm-prroject-api.herokuapp.com/users/',headers={'Content-Type':'application/json',
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
             print(r)
             print(r.json())
@@ -105,7 +105,7 @@ def user_profile():
 @app.route("/finance",methods=["GET"])
 @login_required
 def finance():
-    res = requests.get('http://127.0.0.1:5000/user/sponserd',headers={
+    res = requests.get('https://farm-prroject-api.herokuapp.com/user/sponserd',headers={
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
     spons = res.json().get("data")
 
@@ -119,11 +119,11 @@ def index():
         # user_token = session['user_token']
         spons = []
         if 'user_token' in session:
-            res = requests.get('http://127.0.0.1:5000/user/sponserd',headers={
+            res = requests.get('https://farm-prroject-api.herokuapp.com/user/sponserd',headers={
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
             spons = res.json().get("data")
             print(spons)
-        r = requests.get('http://127.0.0.1:5000/projects/')
+        r = requests.get('https://farm-prroject-api.herokuapp.com/projects/')
 
         if r.status_code == 200:
             data = r.json().get("data")
@@ -146,8 +146,8 @@ def index():
 def farm_sponsership(farm_id):
     try:
 
-        r = requests.get('http://127.0.0.1:5000/projects/')
-        r1 = requests.get('http://127.0.0.1:5000/projects/'+farm_id,headers={'Content-Type':'application/json',
+        r = requests.get('https://farm-prroject-api.herokuapp.com/projects/')
+        r1 = requests.get('https://farm-prroject-api.herokuapp.com/projects/'+farm_id,headers={'Content-Type':'application/json',
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
         if r.status_code == 200 and r1.status_code == 200 :
             farms = r.json().get("data")
@@ -167,9 +167,9 @@ def farm_sponsership(farm_id):
 @completed_pofile_required
 def edit_farm_sponsership(farm_id,sponsered_id):
     try:
-        r = requests.get('http://127.0.0.1:5000/sponserd/'+sponsered_id,headers={'Content-Type':'application/json',
+        r = requests.get('https://farm-prroject-api.herokuapp.com/sponserd/'+sponsered_id,headers={'Content-Type':'application/json',
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
-        r1 = requests.get('http://127.0.0.1:5000/projects/'+farm_id,headers={'Content-Type':'application/json',
+        r1 = requests.get('https://farm-prroject-api.herokuapp.com/projects/'+farm_id,headers={'Content-Type':'application/json',
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
         if r.status_code == 200 and r1.status_code == 200 :
             farms = r.json().get("data")
@@ -193,7 +193,7 @@ def save_sponsership():
     try:
         data = request.form
         print(data)
-        r1 = requests.post('http://127.0.0.1:5000/sponserproject/',data=data,headers={
+        r1 = requests.post('https://farm-prroject-api.herokuapp.com/sponserproject/',data=data,headers={
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
         print(r1)
         if r1.status_code == 201:
@@ -216,7 +216,7 @@ def update_sponsership(spons_id):
     try:
         data = request.form
         print(data)
-        r1 = requests.post('http://127.0.0.1:5000/sponserproject/update/'+spons_id,data=data,headers={
+        r1 = requests.post('https://farm-prroject-api.herokuapp.com/sponserproject/update/'+spons_id,data=data,headers={
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
         print(r1)
         if r1.status_code == 201:
@@ -243,7 +243,7 @@ def make_payment(sponsered_id):
 
             data = request.form
             print(data)
-            r1 = requests.post('http://127.0.0.1:5000/pay-sponser/'+sponsered_id,data=data,headers={'Content-Type':'application/json',
+            r1 = requests.post('https://farm-prroject-api.herokuapp.com/pay-sponser/'+sponsered_id,data=data,headers={'Content-Type':'application/json',
                    'Authorization': 'Bearer {}'.format(session.get('user_token'))})
             # print(r1.json())
             if r1.status_code == 200 :
@@ -256,7 +256,7 @@ def make_payment(sponsered_id):
                 return redirect(url_for('index'))
             return redirect(url_for('index'))
         else:
-            r = requests.get('http://127.0.0.1:5000/sponserd/'+sponsered_id,headers={'Authorization': 'Bearer {}'.format(session.get('user_token'))})
+            r = requests.get('https://farm-prroject-api.herokuapp.com/sponserd/'+sponsered_id,headers={'Authorization': 'Bearer {}'.format(session.get('user_token'))})
             if r.status_code == 200:
                 sp_details = r.json().get("data")
                 return render_template("checkout.html",spons = sp_details)
@@ -278,8 +278,8 @@ def get_a_farm(farm_id):
         # farm_id = request.get_json().get("farm_id")
         # print(session.get('user_token'))
         print(farm_id)
-        # r = requests.get('http://127.0.0.1:5000/projects/')
-        r1 = requests.get('http://127.0.0.1:5000/projects/'+farm_id,headers={'Content-Type':'application/json',
+        # r = requests.get('https://farm-prroject-api.herokuapp.com/projects/')
+        r1 = requests.get('https://farm-prroject-api.herokuapp.com/projects/'+farm_id,headers={'Content-Type':'application/json',
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
         # print(r.json())
         print(r1.json())
@@ -306,8 +306,8 @@ def sponsered_farm_details(sponsered_id):
         # user_token = session['user_token']
         # farm_id = request.get_json().get("farm_id")
         # print(session.get('user_token'))
-        # r = requests.get('http://127.0.0.1:5000/projects/')
-        r1 = requests.get('http://127.0.0.1:5000/sponserd/'+sponsered_id,headers={
+        # r = requests.get('https://farm-prroject-api.herokuapp.com/projects/')
+        r1 = requests.get('https://farm-prroject-api.herokuapp.com/sponserd/'+sponsered_id,headers={
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
         # print(r.json())
         # print(r1.json())
@@ -335,7 +335,7 @@ def logout_user():
             return redirect(url_for('index'))
 
             # user_token = session['user_token']
-            # r = requests.post('http://127.0.0.1:5000//users/logout',headers={'Content-Type':'application/json',
+            # r = requests.post('https://farm-prroject-api.herokuapp.com//users/logout',headers={'Content-Type':'application/json',
             #    'Authorization': 'Bearer {}'.format(user_token)})
             
             # if r.status_code == 200:
@@ -371,7 +371,7 @@ def create_a_user():
         print(data)
 
         try:
-            r = requests.post('http://127.0.0.1:5000/users/',json=data)
+            r = requests.post('https://farm-prroject-api.herokuapp.com/users/',json=data)
             
             if r.status_code == 201:
                 # flash("user created successfuly",category='success')
