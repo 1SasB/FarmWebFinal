@@ -1,0 +1,159 @@
+/* variables */
+
+:root {
+    --d-font: 'Red Hat Text', sans-serif;
+    --d-color: #002d80;
+    --s-color: #001c50;
+    --l-color: #001b4d;
+    --w-color: #ffffff;
+    --lw-color: #eeeeee;
+    --ds-color: #0000002f;
+}
+
+* {
+    font-family: var(--d-font);
+}
+
+.calculator {
+    display: none;
+}
+
+.second-section h5 {
+    font-size: 15px;
+}
+
+.second-section h4 {
+    font-size: 17px;
+}
+
+.profile-icon img {
+    height: 40px;
+    width: 40px;
+}
+
+.user-details .username,
+.user-details .membership-type {
+    font-size: 18px;
+    padding-right: 20px;
+}
+
+.add-farm {
+    height: 40px;
+    width: 100px;
+    background: var(--l-color);
+    border: 1px solid var(--w-color);
+    outline: none !important;
+    color: var(--w-color);
+}
+
+.update {
+    height: 40px;
+    width: 180px;
+    background: var(--l-color);
+    border: 1px solid var(--w-color);
+    outline: none !important;
+    color: var(--w-color);
+}
+
+.new-farms {
+    padding: 80px 0px;
+    font-family: var(--d-font);
+}
+
+h4 {
+    font-family: var(--d-font);
+}
+
+.farm-bg {
+    background: var(--d-color);
+    padding: 10px 0px;
+    font-family: var(--d-font);
+    color: var(--w-color);
+}
+
+.sponsored-farms .items img {
+    max-width: 300px;
+}
+
+.profile-navigation {
+    padding-top: 100px;
+    background: var(--d-color);
+}
+
+.profile-navigation .nav a {
+    color: var(--w-color) !important;
+}
+
+.profile-navigation .nav .active {
+    color: var(--d-color) !important;
+}
+
+.profile-navigation .nav a:hover {
+    background: var(--w-color);
+    color: var(--d-color) !important;
+}
+
+.search .search-box {
+    background: transparent !important;
+    border: none !important;
+}
+
+.search .search-btn {
+    height: 40px;
+    width: 40px;
+    border: none;
+    outline: none;
+}
+
+#referrals h6 {
+    font-size: 12px;
+}
+
+#farm-r h6 {
+    font-size: 12px;
+}
+
+#trade-r h6 {
+    font-size: 12px;
+}
+
+#payment-m .nav-link {
+    background: var(--d-color);
+    margin: 0px 20px;
+    color: var(--w-color) !important;
+}
+
+#payment-m .nav-pills .active {
+    background: transparent !important;
+    border: 1px solid var(--d-color);
+    color: var(--d-color) !important;
+}
+
+.width-style {
+    width: 50%;
+}
+
+#phone {
+    width: 100% !important;
+}
+
+.submit-btn {
+    height: 40px;
+    width: 180px;
+    border: none;
+    outline: none;
+    background: var(--d-color);
+    color: var(--w-color);
+}
+
+#processes {
+    padding-top: 180px;
+}
+
+#processes ul li {
+    list-style: none;
+}
+
+#processes .fa-check {
+    color: var(--d-color);
+}

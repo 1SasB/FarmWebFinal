@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Sponsered Farm Details{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="tickets-info my-4">
+            <div class="card">
+                <div class="card-body" >
+                    <h5 class="card-title"><b>{{farm.name}}</b></h5>
+                    <ul class="list-unstyled">
+                        <li>Harvest Type: {{farm.harvest_type}}</li>
+                        <li>Crop Type: {{farm.crop_type}}</li>
+                        <li>Units: {{farm.units}}</li>
+                        <li>ROS: {{farm.ROS}}</li>
+                        <li>COST PER UNIT: {{farm.cost_per_unit}}</li>
+                        <li>TOTAL AMOUNT: GHC {{farm.total_amount}}</li>
+                    </ul>
+                    <hr>
+                    <h5>Progress</h5>
+                    {% if farm.progress %}
+                        
+                            <ul class="list-unstyled">
+                                {% for prog in farm.progress %}
+                                <li><b>
+                                    <div>
+                                        <h6>{{prog.name}}</h6>
+                                        <hr>
+                                        <p>Images will appear here</p>
+                                    </div>
+                                    
+                                </b></li>
+                                {% endfor %}
+                            </ul>
+                        
+                    {% else %}
+                    <h6>All your farm progress and stages will show here.</h6>
+                    {% endif %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}

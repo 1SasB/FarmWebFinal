@@ -1,0 +1,432 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="payments" role="tabpanel" aria-labelledby="payments-tab">
+                <div class="search d-flex mt-5 border-right border-left border-top border-bottom">
+                    <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" class="form-control search-box" placeholder="Search for payments">
+                </div>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <!-- <th scope="col">#</th> -->
+                        <th scope="col">Date:</th>
+                        <th scope="col">Crop/Commodity</th>
+                        <th scope="col">Farm/Trade Title</th>
+                        <th scope="col">Transaction ID</th>
+                        <th scope="col">Payment Type</th>
+                        <th scope="col">Amount</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for farm in farms %}
+                        {% if farm.payed == True %}
+                            <tr>
+                                <!-- <th scope="row">.</th> -->
+                                <td>{{farm.payment_time}}</td>
+                                <td>{{farm.crop_type}}</td>
+                                <td>{{farm.name}}</td>
+                                <td>{{farm.transaction_id}}</td>
+                                <td>{{farm.payment_type}}</td>
+                                <td>{{farm.total_amount}}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <div class="bg-dark mt-4 px-2 py-1 d-flex justify-content-between">
+                    <div class="date text-light">
+                        <h6>Date:</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Crop/Commodity</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Farm/Trade Title</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Transaction ID</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Payment Type</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Amount</h6>
+                    </div>
+                </div> -->
+                <!-----pagination----->
+                <!-- <div class="d-flex justify-content-center pt-5">
+                    <div class="page-items">
+                        <a href="#"><button class="prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                        <a href="#"><button class="pages active">1</button></a>
+                        <a href="#"><button class="pages">2</button></a>
+                        <a href="#"><button class="pages">3</button></a>
+                        <a href="#"><button class="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                    </div>
+                </div> -->
+                <!---x-pagination--X-->
+            </div>
+            <div class="tab-pane fade" id="referrals" role="tabpanel" aria-labelledby="referrals-tab">
+                <div class="search d-flex mt-5 border-right border-left border-top border-bottom">
+                    <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" class="form-control search-box" placeholder="All referrals">
+                </div>
+                <div class="referral-top d-flex justify-content-between">
+                    <div class="d-flex flex-column w-100 mx-2">
+                        <button class="btn-dark btn mt-4 px-3">Direct Sponsorship Raised: GH&#8373;0</button>
+                        <button class="btn-dark btn mt-2 px-3">Direct Commision Earned: GH&#8373;0</button>
+                    </div>
+                    <div class="d-flex flex-column w-100 mx-2">
+                        <button class="btn-dark btn mt-4 px-3">Indirect Sponsorship Raised: GH&#8373;0</button>
+                        <button class="btn-dark btn mt-2 px-3">Indirect Commision Earned: GH&#8373;0</button>
+                    </div>
+                    <div class="d-flex flex-column w-100 mx-2">
+                        <button class="btn-dark btn mt-4 px-3">Total Sponsorship Raised: GH&#8373;0</button>
+                        <button class="btn-dark btn mt-2 px-3">Total Commision Earned: GH&#8373;0</button>
+                    </div>
+                </div>
+                <div class="bg-dark mt-4 px-2 py-1 d-flex justify-content-between">
+                    <div class="date text-light">
+                        <h6>Referral Type</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Referred User Fullname</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Referred User Phone Number</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Referred User Email</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Date Registered</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Farm/Trade Title</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Amount Paid</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Share</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Commission</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Paid to You</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Date Paid</h6>
+                    </div>
+                </div>
+                <!-----pagination----->
+                <div class="d-flex justify-content-center pt-5">
+                    <div class="page-items">
+                        <a href="#"><button class="prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                        <a href="#"><button class="pages active">1</button></a>
+                        <a href="#"><button class="pages">2</button></a>
+                        <a href="#"><button class="pages">3</button></a>
+                        <a href="#"><button class="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                    </div>
+                </div>
+                <!---x-pagination--X-->
+            </div>
+            <div class="tab-pane fade" id="farm-r" role="tabpanel" aria-labelledby="farm-r-tab">
+                <div class="bg-dark mt-4 px-2 py-1 d-flex justify-content-between">
+                    <div class="date text-light">
+                        <h6>Farm Title</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Crop</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Crop Schedule</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Amount Paid</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>No. of units</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Your contribution</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Farm Harvested</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Commodity Sold</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Overall Farm Profit</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Your Farm Profit</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Payout before Chnage</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Payout Amount</h6>
+                    </div>
+                </div>
+                <!-----pagination----->
+                <div class="d-flex justify-content-center pt-5">
+                    <div class="page-items">
+                        <a href="#"><button class="prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                        <a href="#"><button class="pages active">1</button></a>
+                        <a href="#"><button class="pages">2</button></a>
+                        <a href="#"><button class="pages">3</button></a>
+                        <a href="#"><button class="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                    </div>
+                </div>
+                <!---x-pagination--X-->
+            </div>
+            <div class="tab-pane fade" id="trade-r" role="tabpanel" aria-labelledby="trade-r-tab">
+                <div class="bg-dark mt-4 px-2 py-1 d-flex justify-content-between">
+                    <div class="date text-light">
+                        <h6>Trade Title</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Commodity</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Trade Schedule</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Amount Paid</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>No. of bags</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Your contribution</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Trade Made</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Commodity Sold</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Overall Farm Profit</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Your Farm Profit</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Payout before Chnage</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Payout Amount</h6>
+                    </div>
+                </div>
+                <!-----pagination----->
+                <div class="d-flex justify-content-center pt-5">
+                    <div class="page-items">
+                        <a href="#"><button class="prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                        <a href="#"><button class="pages active">1</button></a>
+                        <a href="#"><button class="pages">2</button></a>
+                        <a href="#"><button class="pages">3</button></a>
+                        <a href="#"><button class="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                    </div>
+                </div>
+                <!---x-pagination--X-->
+            </div>
+            <div class="tab-pane fade" id="payouts" role="tabpanel" aria-labelledby="payouts">
+                <div class="search d-flex mt-5 border-right border-left border-top border-bottom">
+                    <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" class="form-control search-box" placeholder="Search for payouts">
+                </div>
+
+                <div class="bg-dark mt-4 px-2 py-1 d-flex justify-content-between">
+                    <div class="date text-light">
+                        <h6>Date:</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Crop/Commodity</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Farm/Trade Title</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Amount</h6>
+                    </div>
+                </div>
+                <!-----pagination----->
+                <div class="d-flex justify-content-center pt-5">
+                    <div class="page-items">
+                        <a href="#"><button class="prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                        <a href="#"><button class="pages active">1</button></a>
+                        <a href="#"><button class="pages">2</button></a>
+                        <a href="#"><button class="pages">3</button></a>
+                        <a href="#"><button class="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                    </div>
+                </div>
+                <!---x-pagination--X-->
+            </div>
+            <div class="tab-pane fade" id="statements" role="tabpanel" aria-labelledby="statements">
+                <div class="search d-flex mt-5 border-right border-left border-top border-bottom">
+                    <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" class="form-control search-box" placeholder="Search for statements">
+                </div>
+
+                <div class="bg-dark mt-4 px-2 py-1 d-flex justify-content-between">
+                    <div class="date text-light">
+                        <h6>Date:</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Crop/Commodity</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Farm/Trade Title</h6>
+                    </div>
+                    <div class="date text-light">
+                        <h6>Amount</h6>
+                    </div>
+                </div>
+                <!-----pagination----->
+                <div class="d-flex justify-content-center pt-5">
+                    <div class="page-items">
+                        <a href="#"><button class="prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                        <a href="#"><button class="pages active">1</button></a>
+                        <a href="#"><button class="pages">2</button></a>
+                        <a href="#"><button class="pages">3</button></a>
+                        <a href="#"><button class="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                    </div>
+                </div>
+                <!---x-pagination--X-->
+            </div>
+            <div class="tab-pane fade mt-5" id="payment-m" role="tabpanel" aria-labelledby="payment-m">
+                <h4 class="pl-4 my-3">Please select your preferred payment method</h4>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="g-bank-tab" data-toggle="pill" href="#g-bank" role="tab" aria-controls="pills-g-bank" aria-selected="true">Ghana Bank</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="momo-tab" data-toggle="pill" href="#momo" role="tab" aria-controls="pills-momo" aria-selected="false">Momo</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="f-bank-tab" data-toggle="pill" href="#f-bank" role="tab" aria-controls="f-bank" aria-selected="false">Foreign Bank</a>
+                    </li>
+                </ul>
+                <div class="tab-content width-style" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="g-bank" role="tabpanel" aria-labelledby="g-bank-tab">
+                        <p> <span class="price"><strong>$40.00</strong></span> for Bank Transfer statement Charge</p>
+                        <form action="" method="POST">
+                            <div>
+                                <label> Bank Name</label>
+                                <input type="text" name="branch-name" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Bank Branch</label>
+                                <input type="text" name="bank-branch" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Account Name</label>
+                                <input type="text" name="account-name" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Account Number</label>
+                                <input type="text" name="account-number" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label>Swift Number</label>
+                                <input type="text" name="swift-number" class="form-control">
+                            </div>
+                            <div class="d-flex justify-content-center py-5">
+                                <button class="update" type="submit">Update Details</button>
+                            </div>
+                    </div>
+                    </form>
+                    <div class="tab-pane fade" id="momo" role="tabpanel" aria-labelledby="momo-tab">
+
+
+                        <p> <span class="price"><strong>1%</strong></span> for Momo statement Charge</p>
+                        <form action="" method="POST">
+                            <div>
+                                <label> Account Name</label>
+                                <input type="text" name="branch-name" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Account Network</label>
+                                <div class="form-group">
+                                    <label for=""></label>
+                                    <select class="form-control" name="" id="">
+                                    <option>MTN</option>
+                                    <option>AirtelTigo</option>
+                                    <option>Vodafone</option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <label> Account Name</label>
+                                <input type="text" name="account-name" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Account Number</label>
+                                <input type="text" name="account-number" class="form-control">
+                            </div>
+                            <div class="d-flex justify-content-center py-5">
+                                <button class="update" type="submit">Update Details</button>
+                            </div>
+                    </div>
+                    </form>
+
+                    <div class="tab-pane fade" id="f-bank" role="tabpanel" aria-labelledby="f-bank-tab">
+
+                        <p> <span class="price"><strong>$40.00</strong></span> for Bank Transfer statement Charge</p>
+                        <form action="" method="POST">
+                            <div>
+                                <label> Bank Name</label>
+                                <input type="text" name="branch-name" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Bank Branch</label>
+                                <input type="text" name="bank-branch" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Account Name</label>
+                                <input type="text" name="account-name" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label> Account Number</label>
+                                <input type="text" name="account-number" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <label>Swift Number</label>
+                                <input type="text" name="swift-number" class="form-control">
+                            </div>
+                            <div class="d-flex justify-content-center py-5">
+                                <button class="update" type="submit">Update Details</button>
+                            </div>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

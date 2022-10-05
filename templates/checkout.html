@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Checkout{% endblock %}
+{% block body %}
+<div class="container py-5" style="max-width: 970px; background-color: white; margin-top: 7px; border-radius: 5px;">
+    <h4>PAYEMENT DETAILS</h4>
+    <form id="checkout-form" method="POST" action="{{ url_for('make_payment', sponsered_id=spons._id) }}" style="margin-top: 15px;">
+        <legend class="col-form-label col-sm-2 pt-0">Payment Method</legend>
+        <div class="col-sm-10">
+            <div class="form-check" style="margin-bottom: 25px;">
+                <p>{{spons.payment_type}}</p>
+                </label>
+            </div>
+        </div>
+        <hr>
+            <!-- <h5>Rate</h5> -->
+                <ul class="list-unstyled">
+                    <li>Title: {{spons.name}}</li>
+                    <li>Harvest Type: {{spons.harvest_type}}</li>
+                    <li>Crop Type: {{spons.crop_type}}</li>
+                    <li>Units: {{spons.units}}</li>
+                    <li>Total Amount: GHC{{spons.total_amount}}</li>
+                </ul>
+        <hr>
+        
+    </form>
+    <button type="submit" id="paySpons-btn" class="btn btn-primary" style="margin-top: 5px;" data-toggle="modal" data-target="#TicketModal">CHECK OUT</button>
+      
+
+</div>
+
+<div class="modal fade" id="TicketModal" aria-labelledby="centermodal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Tickets Info</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Thank You for Sponsering A Farm . You will receive a mobile money prompt soon.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<!-------------Custom JS------------->
+<script src="{{ url_for('static', filename = 'farmApp/my_js/checkout.js')  }}"></script>
+<!----X--------Custom JS-------X----->
+{% endblock %}

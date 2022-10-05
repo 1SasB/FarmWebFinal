@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!------------Bootstap CSS------------>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'farmApp/assets/vendor/bootstrap/css/bootstrap.css') }}">
+    <!----X-------Bootstap CSS------X----->
+    <!----------Font Awesome CSS---------->
+    <link rel="stylesheet" href="{{ url_for('static', filename='farmApp/assets/vendor/font-awesome/css/all.css' ) }}">
+    <!----X-----Font Awesome CSS----X----->
+    <!-----------Owl-carousel CSS--------->
+    <link rel="stylesheet" href="{{ url_for('static', filename='farmApp/assets/vendor/Owl_Carousel/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='farmApp/assets/vendor/Owl_Carousel/css/owl.theme.default.css') }}">
+    <!----X------Owl-carousel CSS------X-->
+    <!---------Google fonts------>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap" rel="stylesheet">
+    <!-------------Custom CSS------------->
+    <link rel="stylesheet" href="{{ url_for('static', filename='farmApp/css/style.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='farmApp/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='farmApp/css/sponsor.css') }}">
+    <!----X--------Custom CSS-------X----->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+    <!-------header------->
+    <header class="header-items sticky-top">
+        <!--------------Navbar------------->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#nav-bar" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">
+                <div></div>
+             
+        </button>
+                <div class="collapse navbar-collapse pt-3" id="nav-bar">
+                    <ul class="navbar-nav m-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">FARMS</a>
+                        </li>
+                        {% if "user_token" in session %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('finance') }}">Finance</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% if "user_token" in session %}
+                    <div class="user-details d-flex">
+                        <div>
+                            <h6 class="username">{{session.username}}</h6>
+                            <!-- <h6 class="membership-type">Sponsor</h6> -->
+                        </div>
+                        
+                    </div>
+                    <a class="signin-btn" href="{{ url_for('user_profile') }}">PROFILE</a>
+                    <a class="signup-btn" href="{{ url_for('logout_user') }}">LOGOUT</a>
+                    {% else %}
+                    <button type="button" class="signin-btn" data-toggle="modal" data-target="#signin">SIGN IN</button>
+                    <button type="button" class="signup-btn" data-toggle="modal" data-target="#signup">SIGN UP</button>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        <!------X-------Navbar---------X--->
+    </header>
+    <!---X---header---X--->
+    
+    {% block body %}
+    {% endblock %}
+
+
+    <!-----footer-------->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h3>Our Vision &nbsp; <i class="fas fa-lightbulb    "></i></h3>
+                    <p>To be the foremost tech- driven platform for livestock investment.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h3>Our Team &nbsp; <i class="fa fa-users" aria-hidden="true"></i></h3>
+                    <ul>
+                        <li>Jsdf Selasi fasdfd (coordinator and researcher) </li>
+                        <li>Eric Kwesi Kayang the (marketer, IT personal and farm manager/ supervisor)</li>
+                        <li>Makeda Alanksd Dyer (administrator/Accounts)</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h3>Contact Us</h3>
+                    <span class="d-flex"><i class="fa fa-user mr-3 mb-4" aria-hidden="true"></i> <p class="name"> FarmProject</p></span>
+                    <span class="d-flex"><i class="fa fa-phone mr-3 mb-4" aria-hidden="true"></i> <a href="tel:0556966093" class="number pb-3">0556458093</a></span>
+                    <span class="d-flex"><i class="fa fa-phone mr-3 mb-4" aria-hidden="true"></i> <a href="tel:0596560323" class="number"> 0574860323</a></span>
+
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright text-center">FarmProject &copy; 2022</p>
+        </div>
+    </footer>
+    <!---X-footer---X---->
+
+    <!-------------JQuery------------>
+    <script src="{{ url_for('static', filename= 'farmApp/assets/vendor/jquery/jquery.js') }}"></script>
+    <!----X--------JQuery------X----->
+    <!----------Bootstrap JS--------->
+    <script src="{{ url_for('static', filename= 'farmApp/assets/vendor/bootstrap/js/bootstrap.js') }}"></script>
+    <!----X-----Bootstrap JS---X----->
+    <!-----------Owl-carousel CSS--------->
+    <script src="{{ url_for('static', filename= 'farmApp/assets/vendor/Owl_Carousel/js/owl.carousel.js') }}"></script>
+    <!----X------Owl-carousel CSS------X-->
+    <!----------Font Awesome JS---------->
+    <script src="{{ url_for('static', filename= 'farmApp/assets/vendor/font-awesome/js/all.js') }}"></script>
+    <!----X-----Font Awesome JS----X----->
+    <!-------------Jquery------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-------------Jquery------------->
+
+    {% block javascript %}{% endblock %}
+</body>
+</html>

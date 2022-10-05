@@ -1,0 +1,28 @@
+@media only screen and (max-width: 991px) {
+    .navbar .signup-btn,
+    .navbar .signin-btn {
+        margin: 5px 0px;
+    }
+    .navbar .navbar-nav {
+        padding-top: 15px;
+    }
+    .overlay {
+        display: none !important;
+    }
+    #signup {
+        padding: 90px 0px;
+        font-family: var(--d-font);
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .navbar {
+        padding: 0px 15px;
+    }
+}
+
+@media only screen and (max-width: 988px) {
+    .form-flex {
+        flex-wrap: wrap;
+    }
+}

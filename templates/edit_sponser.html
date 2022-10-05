@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% block title %}Farms{% endblock %}
+{% block body %}
+    <!---------farms------->
+    <!-- <nav class="new-farms">
+        <div class="farm-bg">
+            <div class="container d-flex justify-content-between">
+                <h4>Farms</h4>
+                <a href="sponsor.html"><button class="add-farm"><i class="fa fa-arrow-left" aria-hidden="true"></i> back</button></a>
+            </div>
+        </div>
+    </nav> -->
+
+
+
+    <!------farm forms-------->
+    <div class="container py-5">
+        <div class="row">
+            <form action="{{ url_for('update_sponsership', spons_id=spons._id) }}" method="POST" class="col-lg-4 col-md-12 col-sm-12">
+                <h4 class="bg-secondary px-4 py-2 text-light">Farm details</h4>
+                <div class="d-flex flex-column mt-4">
+                    <label>Crop Schedule <span class="text-danger">*</span></label>
+                    <select class="form-control" name="project_id" id="">
+                        <option value="{{farm._id}}">{{farm.title}}__{{farm.start_date}}--{{farm.end_date}}</option>
+                    </select>
+                </div>
+                <div class="d-flex flex-column mt-4">
+                    <label>Name your farms <span class="text-danger">*</span></label>
+                    <input name="name" value="{{spons.name}}" type="text" class="w-100 form-control" placeholder="Farm name/title" required>
+                </div>
+                <div class="d-flex flex-column mt-4">
+                    <label>Crop <span class="text-danger">*</span></label>
+                    <input type="text" name="crop_type" class="w-100 form-control" placeholder="Farm name/title" value="{{farm.product}}" readonly>
+                </div>
+                <div class="d-flex flex-column mt-4">
+                    <label>Number of units <span class="text-danger">*</span></label>
+                    <input value="{{spons.units}}" type="text" name="unit_number" class="w-100 form-control" placeholder="1" onkeyup="unit_ch(this.value)" onchange="unit_ch(this.value)" required>
+                    <input id="total_amount" type="text" name="total_amount" class="d-none">
+                </div>
+
+                <div class="form-group mt-4">
+                    <label>Harvest proceeds as <span class="text-danger">*</span></label>
+                    <select class="form-control" name="harvest_type" id="" required>
+                          <option>{{spons.harvest_type}}</option>
+                          <option value="Crop">Crop</option>
+                          <option value="Cash">Cash</option>
+                    </select>
+                </div>
+                <label>Pay via <span class="text-danger mt-4">*</span></label>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary">
+                                Mobile Money
+                               <input type="radio" name="payment_type" id="" autocomplete="off" value="Mobile Money" required>
+                    </label>
+                    
+                </div>
+                <div class="d-flex flex-column">
+                    <label>Extra Note <span class="text-danger"></span></label>
+                    <textarea name="note" cols="30" rows="6" class="form-control">{{spons.note}}</textarea>
+                </div>
+
+                <div class="form-check mt-4">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" required>
+                        I acknowledge the <a href="#">Terms and Conditions <span class="text-danger">*</span></a>
+                      </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary mr-3 my-4" type="submit">Pay Now</button><button class="btn btn-danger cancel my-4" type="button">Cancel</button>
+                </div>
+            </form>
+            <div class="col-lg-8 col-md-12 col-sm-12 second-section">
+                <h4 class="bg-secondary px-4 py-2 text-light">Farm Financial Summry</h4>
+                <div class="units d-flex justify-content-between">
+                    <div>
+                        <h5>No of Units(1/8 of an acre)</h5>
+                        <h4 id="unit_number">{{spons.units}} Unit(s)</h4>
+                    </div>
+                    <div>
+                        <h5>Cost of Production per unit</h5>
+                        <h4 id="cost_per_unit_hidden" style="display: none;">{{farm.cost_per_unit}}</h4>
+                        <h4 id="cost_per_unit">{{farm.cost_per_unit}}</h4>
+                    </div>
+                </div>
+                <div class="service d-flex justify-content-between mt-3">
+                    <div>
+                        <h5>Service Charge</h5>
+                        <h4 id="service_charge">10.00%</h4>
+                    </div>
+                    <div>
+                        <h5>Your profit Margin</h5>
+                        <h4>{{farm.ROS}}</h4>
+                    </div>
+                </div>
+
+                <div class="grand-total d-flex justify-content-between mt-3">
+                    <div>
+                        <h5>Grand Total Payable</h5>
+                        <h2 id="total_payable">GH&#8373;{{spons.total_amount}}</h2>
+                    </div>
+                    <div>
+                        <h5>Potential ROS GH&#8373;</h5>
+                        <h2>0.00 - 0.00</h2>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn-danger btn mt-3 show-calculator">Show your farm calculator</button>
+                    <button class="hide-calculator btn btn-secondary mt-3 text-light">Hide Calculator</button>
+                    <div class="calculator mt-4">
+                        <h4 class="bg-secondary  px-4 py-2 text-light">Calculations</h4>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6><strong>Item</strong></h6></span>
+                            <span class="value"><strong>Value</strong></span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>No of Units(1/8 of an acre)</h6></span>
+                            <span class="value">1</span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Cost of Production per Acre</h6></span>
+                            <span class="value">1242.0</span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Cost of Production per Unit</h6></span>
+                            <span class="value">155.25</span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Service Charge(10%)</h6></span>
+                            <span class="value">15.53</span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6><strong>Grand Total</strong></h6></span>
+                            <span class="value"><strong>170.78</strong></span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6><strong>Revenue Range Between</strong></h6></span>
+                            <span class="value"><h6><strong>Low</strong></h6></span>
+                            <span class="value"><h6><strong>High</strong></h6></span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Yield per Acre(kg)</h6></span>
+                            <span class="value"><h6>900.00</h6></span>
+                            <span class="value"><h6>1200.00</h6></span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Yield(kg)</h6></span>
+                            <span class="value"><h6>112.50</h6></span>
+                            <span class="value"><h6>150.00</h6></span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Selling Price per Kg</h6></span>
+                            <span class="value"><h6>1.70</h6></span>
+                            <span class="value"><h6>1.80</h6></span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Estimated Revenue</h6></span>
+                            <span class="value"><h6>191.25</h6></span>
+                            <span class="value"><h6>270.00</h6></span>
+                        </div>
+                        <hr>
+                        <div class="items-holder d-flex justify-content-between">
+                            <span class="item"><h6>Estimated Net Profit (Est. Revenue - Total Cost of Prod</h6></span>
+                            <span class="value"><h6>20.47</h6></span>
+                            <span class="value"><h6>99.22</h6></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--X---farm forms-------->
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <div id="spinner-box" class="d-flex justify-content-center" >
+                <div class="spinner-border text-primary mx-2" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+                <div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<!-------------Custom JS------------->
+<script src="{{ url_for('static', filename = 'farmApp/js/main.js')  }}"></script>
+<!----X--------Custom JS-------X----->
+{% endblock %}
