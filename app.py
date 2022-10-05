@@ -61,11 +61,13 @@ def user_profile():
             print(request.form)
             print(request.files)
             
-            r = requests.put('https://farm-prroject-api.herokuapp.com/users/',data=data,files=request.files,headers={
+            r = requests.post('https://farm-prroject-api.herokuapp.com/users/create-profile',data=data,files=request.files,headers={
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
             print(r.status_code)
 
             if r.status_code == 201:
+                session["profile_status"] = True
+                print("here")
                 flash('successfuly saved user profile',category='success')
                 return redirect(url_for("index"))
             elif r.status_code == 400:
