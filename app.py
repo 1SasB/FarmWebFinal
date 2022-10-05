@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect,session,fla
 from flask.globals import request
 from werkzeug.utils import redirect
 from datetime import datetime
-from wapp.auth_middleware import login_required, completed_pofile_required
+from auth_middleware import login_required, completed_pofile_required
 import requests
 import json
 import unicodedata
