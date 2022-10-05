@@ -62,10 +62,10 @@
                                             </div>
                                         </div>
                                         <div class="buttons">
-                                            <a href="{{ url_for('edit_farm_sponsership', farm_id=farm.project_id ,sponsered_id=farm._id) }}" class="c-btn">Edit Sponser Detail</a>
                                             {% if farm.payed == True %}
                                             <a href="{{ url_for('sponsered_farm_details', sponsered_id=farm._id) }}" class="read-more btn">View</a> 
                                             {% else %} 
+                                            <a href="{{ url_for('edit_farm_sponsership', farm_id=farm.project_id ,sponsered_id=farm._id) }}" class="c-btn">Edit Sponser Detail</a>
                                             <a href="{{ url_for('make_payment', sponsered_id=farm._id) }}" class="read-more btn">Pay</a>
                                             {% endif %}
                                             <!-- <button class="read-more" data-toggle="modal" data-target="#pig-farm">Read</button> -->
