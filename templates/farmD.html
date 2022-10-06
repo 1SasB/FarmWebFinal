@@ -14,16 +14,18 @@
                         <li>COST PER UNIT: {{farm.cost_per_unit}}</li>
                         <li>TOTAL AMOUNT: GHC {{farm.total_amount}}</li>
                     </ul>
+                    
+                    <h5 class="pt-3"><b>PROGRESS</b></h5>
                     <hr>
-                    <h5>Progress</h5>
                     {% if farm.progress %}
                         
                             <ul class="list-unstyled">
                                 {% for prog in farm.progress %}
                                 <li>
-                                    <div>
-                                        <h6>{{prog.name}}</h6>
-                                        <p>{{prog.progress_updated_on}}</p>
+                                    <div class="pb-5">
+                                        <h6><b>{{prog.name}}</b></h6>
+                                        <hr>
+                                        <p>Uploaded on: {{prog.progress_updated_on}}</p>
                                         <hr>
                                         <div class="row">
                                             {% for image in prog.images %}

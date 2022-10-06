@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}Checkout{% endblock %}
 {% block body %}
-<div class="container py-5" style="max-width: 970px; background-color: white; margin-top: 7px; border-radius: 5px;">
-    <h4>PAYEMENT DETAILS</h4>
+<div class="container " style="max-width: 970px; background-color: white; margin-top: 7px; border-radius: 5px;">
+    <h4 style="color: white;" class="fdet px-2 py-2">PAYEMENT</h4>
     <form id="checkout-form" method="POST" action="{{ url_for('make_payment', sponsered_id=spons._id) }}" style="margin-top: 15px;">
         <legend class="col-form-label col-sm-2 pt-0">Payment Method</legend>
         <div class="col-sm-10">
             <div class="form-check" style="margin-bottom: 25px;">
                 <p>{{spons.payment_type}}</p>
-                </label>
+                <label class="form-check-label" for="gridRadios1">
+                    <img src="../static/farmApp/images/momo_mtn.png" alt="momo-image" style="max-width: 75px; max-height: 60px; ">
+                </label>                
             </div>
         </div>
         <hr>
@@ -23,7 +25,7 @@
         <hr>
         
     </form>
-    <button type="submit" id="paySpons-btn" class="btn btn-primary" style="margin-top: 5px;" data-toggle="modal" data-target="#TicketModal">CHECK OUT</button>
+    <button type="submit" id="paySpons-btn" class="btn btn-success mx-2 my-2" style="margin-top: 5px;" data-toggle="modal" data-target="#TicketModal">CHECK OUT</button>
       
 
 </div>

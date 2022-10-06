@@ -65,7 +65,7 @@ h4 {
 }
 
 .farm-bg {
-    background: var(--d-color);
+    background: #4caf50;
     padding: 10px 0px;
     font-family: var(--d-font);
     color: var(--w-color);
@@ -77,7 +77,7 @@ h4 {
 
 .profile-navigation {
     padding-top: 100px;
-    background: var(--d-color);
+    background: #4caf50;
 }
 
 .profile-navigation .nav a {
@@ -118,7 +118,7 @@ h4 {
 }
 
 #payment-m .nav-link {
-    background: var(--d-color);
+    background: #4caf50;
     margin: 0px 20px;
     color: var(--w-color) !important;
 }
@@ -142,7 +142,7 @@ h4 {
     width: 180px;
     border: none;
     outline: none;
-    background: var(--d-color);
+    background: #4caf50;
     color: var(--w-color);
 }
 
@@ -155,5 +155,5 @@ h4 {
 }
 
 #processes .fa-check {
-    color: var(--d-color);
+    color: #4caf50;
 }

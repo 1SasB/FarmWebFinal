@@ -7,6 +7,19 @@
                     <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                     <input type="text" class="form-control search-box" placeholder="Search for payments">
                 </div>
+                <div class="container">
+                    {% with messages = get_flashed_messages(with_categories = True) %}
+                      {% if messages %}
+                      
+                        {% for category,message in messages %}
+                        <div id="alert-box1" class="error-box {{category}}" role="alert">
+                          {{ message }}
+                        </div>
+                        {% endfor %}
+                     
+                      {% endif %}
+                    {% endwith %}
+                </div>
                 <table class="table">
                     <thead class="thead-dark">
                       <tr>

@@ -13,8 +13,8 @@ body{
 :root {
     --d-font: 'Red Hat Text', sans-serif;
     --d-color: #4caf50;
-    --s-color: #001c50;
-    --l-color: #001b4d;
+    --s-color: #4caf50;
+    --l-color: #4caf50;
     --w-color: #ffffff;
     --lw-color: #eeeeee;
     --ds-color: #0000002f;
@@ -55,7 +55,7 @@ body{
 
 .navbar {
     background: var(--w-color);
-    box-shadow: 0px 5px 7px var(--ds-color);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     font-family: var(--d-font);
 }
 
@@ -67,7 +67,7 @@ body{
 .navbar .signup-btn {
     height: 40px;
     width: 80px;
-    background: var(--d-color);
+    background: #4caf50;
     border: none;
     outline: none;
     border-radius: 0px;
@@ -98,7 +98,7 @@ body{
 }
 
 .navbar .signin-btn:hover {
-    background: var(--d-color);
+    background: #4caf50;
     border: none;
     color: var(--w-color);
     transition: 0.5s ease-in-out;
@@ -146,7 +146,7 @@ body{
     border: 1px solid var(--w-color);
     outline: none;
     color: var(--w-color);
-    background: var(--d-color);
+    background: #4caf50;
     font-size: 15px;
     cursor: pointer;
 }
@@ -215,7 +215,7 @@ body{
 }
 
 #main .modal-header {
-    background: var(--d-color);
+    background: #4caf50;
     color: var(--w-color);
 }
 
@@ -304,11 +304,11 @@ body{
 }
 
 #main .page-items .pages:hover {
-    background: var(--d-color);
+    background: #4caf50;
 }
 
 #main .page-items .active {
-    background: var(--d-color) !important;
+    background: #4caf50 !important;
 }
 
 #main .page-items .prev,
@@ -420,7 +420,7 @@ body{
     width: 40px;
     border: none;
     outline: none;
-    background: var(--ds-color);
+    background: #4caf50;
 }
 
 #signin .fa-code {
@@ -479,14 +479,14 @@ body{
     margin-top: 10px;
     border: none;
     outline: none;
-    background: var(--d-color);
+    background: #4caf50;
     color: var(--w-color);
     font-family: var(--d-font);
     font-size: 15px;
 }
 
 #signin .modal-header {
-    background: var(--d-color);
+    background: #4caf50;
     color: var(--w-color);
     font-family: var(--d-font);
 }
@@ -517,7 +517,7 @@ body{
     width: 40px;
     border: none;
     outline: none;
-    background: var(--ds-color);
+    background: #4caf50;
 }
 
 #signup .fa-code {
@@ -576,14 +576,14 @@ body{
     margin-top: 10px;
     border: none;
     outline: none;
-    background: var(--d-color);
+    background: #4caf50;
     color: var(--w-color);
     font-family: var(--d-font);
     font-size: 15px;
 }
 
 #signup .modal-header {
-    background: var(--d-color);
+    background: #4caf50;
     color: var(--w-color);
     font-family: var(--d-font);
 }
@@ -594,7 +594,7 @@ body{
 }
 
 .link {
-    color: var(--d-color);
+    color: #4caf50;
     cursor: pointer;
 }
 
@@ -641,7 +641,7 @@ body{
     display: inline-block;
     width: 35px;
     height: 35px;
-    background: var(--d-color);
+    background: #4caf50;
     color: #fff;
     font-size: 18px;
     text-align: center;
@@ -695,7 +695,7 @@ footer .social-media a {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background: var(--d-color);
+    background: #4caf50;
     color: #fff;
     font-size: 18px;
     text-align: center;
@@ -794,4 +794,15 @@ footer .social-media a {
 
   .farm-details{
     background-color: white;
+  }
+
+  .sinin{
+    max-width: 550px !important;
+    background: white;
+    border-radius: 5px;
+    margin-top: 75px;
+  }
+
+  .fdet{
+    background: #4caf50 !important;
   }

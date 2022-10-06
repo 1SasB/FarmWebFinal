@@ -249,6 +249,7 @@ def make_payment(sponsered_id):
                    'Authorization': 'Bearer {}'.format(session.get('user_token'))})
             # print(r1.json())
             if r1.status_code == 200 :
+                flash("Payment Successful",category='success')
                 # farm = r1.json().get("data")
                 return {
                     "message": "Success"
@@ -284,7 +285,7 @@ def get_a_farm(farm_id):
         r1 = requests.get('https://farm-prroject-api.herokuapp.com/projects/'+farm_id,headers={'Content-Type':'application/json',
                'Authorization': 'Bearer {}'.format(session.get('user_token'))})
         # print(r.json())
-        print(r1.json())
+        # print(r1.json())
         if r1.status_code == 200 :
             # farms = r.json().get("data")
             farm = r1.json().get("data")
@@ -325,6 +326,41 @@ def sponsered_farm_details(sponsered_id):
         print(e)
         flash("An error Occured Please Try again later",category='error')
         return render_template('index.html')
+
+
+@app.route("/create-farm",methods=["GET"])
+@login_required
+def create_farm_project():
+    if request.method == 'POST':
+        try:
+            data = request.form
+            
+            r = requests.post('https://farm-prroject-api.herokuapp.com/projects/',data=data,files=request.files,headers={
+               'Authorization': 'Bearer {}'.format(session.get('user_token'))})
+            print(r.status_code)
+
+            if r.status_code == 201:
+                flash('successfuly saved Project',category='success')
+                return redirect(url_for("create_farm_project"))
+            elif r.status_code == 400:
+                flash('couldnt save Project',category='error')
+                return redirect(url_for("create_farm_project"))
+            else:
+                flash('couldnt save Project',category='error')
+                return redirect(url_for("create_farm_project"))
+        except Exception as e:
+            print(e)
+            flash('couldnt save user profile',category='error')
+            return redirect(url_for("create_farm_project"))
+        # pass
+    else:
+        try:
+            return render_template("create_farm")
+        except Exception as e:
+            print(e)
+            flash("An error Occured Please Try again later",category='error')
+            return redirect(url_for("index"))
+
 
 @app.route('/logout',methods=["GET","POST"])
 @login_required

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block body %}
+<body>
+    <form action="{{ url_for('create_farm_project')}}" enctype="multipart/form-data" method="post" class="py-5">
+        <div class="container profile-div ">
+            <div class="profile-head">
+                <h3><b>CREATE FARM PROJECT</b></h3>
+            </div>
+            <div class="container">
+                {% with messages = get_flashed_messages(with_categories = True) %}
+                  {% if messages %}
+                  
+                    {% for category,message in messages %}
+                    <div id="alert-box1" class="error-box {{category}}" role="alert">
+                      {{ message }}
+                    </div>
+                    {% endfor %}
+                 
+                  {% endif %}
+                {% endwith %}
+            </div>
+            <div class="row px-3">
+                <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                    <label for="name">Title<span class="text-danger">*</span></label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm- mt-3">
+                    <label for="name">Product</label>
+                    <input type="text" name="product" class="form-control">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                    <label for="name">Cost Per Unit<span class="text-danger">*</span></label>
+                    <input type="text" name="cost_per_unit" class="form-control">
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                    <label for="name">Start Date <span class="text-danger">*</span>(yyyy-mm-dd)</label>
+                    <input  type="text" name="start_date" class="form-control" placeholder="Format (YYYY-MM-DD)">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                    <label for="name">End Date <span class="text-danger">*</span>(yyyy-mm-dd)</label>
+                    <input type="text" name="start_date" class="form-control" placeholder="Format (YYYY-MM-DD)">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                    <label for="name">ROS<span class="text-danger">*</span></label>
+                    <input type="tel" id="phone" name="ROS" class="form-control" placeholder="eg :15% - 20%">
+                </div>
+                
+                <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+                    <label for="name">Project Photo<span class="text-danger">*</span></label>
+                    
+                    <div class="">
+                        <input name="project_image" type="file" class="form-control-file" id="inputGroupFile01" >
+                        <!-- <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 mt-3">
+                    <label>Description <span class="text-danger"></span></label>
+                    <textarea name="description" cols="30" rows="6" class="form-control"></textarea>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 mt-3 d-none">
+                    <label for="name">Resources <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Residential Address" name="resources">
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12 mt-3 d-none">
+                    <label for="name">Available Slots</label>
+                    <input value="5" name="available_slots" type="text" class="form-control" placeholder="5">
+                </div>
+               
+
+            </div>
+
+            <div class="btn-center">
+                <button class="submit-btn my-3" type="submit">Submit</button>
+            </div>
+
+        </div>
+
+
+    </form>
+{% endblock %}

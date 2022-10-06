@@ -17,7 +17,7 @@
     <div class="container py-5">
         <div class="row">
             <form action="{{ url_for('save_sponsership') }}" method="POST" class="col-lg-4 col-md-12 col-sm-12 farm-details">
-                <h4 class="bg-secondary px-4 py-2 text-light">Farm details</h4>
+                <h4 class="bg-secondary fdet px-4 py-2 text-light">Farm details</h4>
                 <div class="d-flex flex-column mt-4">
                     <label>Crop Schedule <span class="text-danger">*</span></label>
                     <select class="form-control" name="project_id" id="" onchange="get_new_farm_data(this.value)">
@@ -78,7 +78,7 @@
                 </div>
             </form>
             <div class="col-lg-8 col-md-12 col-sm-12 farm-details second-section">
-                <h4 class="bg-secondary px-4 py-2 text-light">Farm Financial Summry</h4>
+                <h4 class="fdet px-4 py-2 text-light">Farm Financial Summry</h4>
                 <div class="units d-flex justify-content-between">
                     <div>
                         <h5>No of Units(1/8 of an acre)</h5>
@@ -108,7 +108,7 @@
                     </div>
                     <div>
                         <h5>Potential ROS GH&#8373;</h5>
-                        <h2>0.00 - 0.00</h2>
+                        <h2 id="rosGHC">0.00 - 0.00</h2>
                     </div>
                 </div>
 

@@ -9,7 +9,7 @@
 </style>
     <!-----------Main------------>
     <section id="main">
-        <div>
+        <div class="container">
             {% with messages = get_flashed_messages(with_categories = True) %}
               {% if messages %}
               
@@ -21,7 +21,7 @@
              
               {% endif %}
             {% endwith %}
-          </div>
+        </div>
         <div class="bg-color">
             <div class="container">
                 {% if "user_token" in session %}
@@ -33,7 +33,7 @@
                                 
                                     {% if my_farms %}
                                         {% for farm in my_farms %}
-                                        <div class="col-12 col-md-6 col-sm-6">
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="card">
                                             <div class="card-top-flex">
                                                 <img class="card-img-top" src="{{farm.image_url}}" width="100%" alt="">
