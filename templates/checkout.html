@@ -36,7 +36,21 @@
               <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Thank You for Sponsering A Farm . You will receive a mobile money prompt soon.</p>
+              <p>Thank You for Sponsering A Farm . You will receive a mobile money prompt. You will be redirected after Payment is successful </p>
+            </div>
+            <div id="alert-boxx" class="alert alert-primary" role="alert">
+            
+                <div id="spinner-box" class="d-flex justify-content-center" >
+                    <div class="spinner-border text-primary mx-2" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
+                    <div>
+                        Waiting for payment ...
+                    </div>
+                </div>
+            </div>
+            <div id="alert-boxx1" class="alert alert-danger d-none" role="alert">
+                PAYMENT UNSUCCESSFUL
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -20,14 +20,21 @@
                         
                             <ul class="list-unstyled">
                                 {% for prog in farm.progress %}
-                                <li><b>
+                                <li>
                                     <div>
                                         <h6>{{prog.name}}</h6>
+                                        <p>{{prog.progress_updated_on}}</p>
                                         <hr>
-                                        <p>Images will appear here</p>
+                                        <div class="row">
+                                            {% for image in prog.images %}
+                                            <div class="col-lg-6">
+                                                <img src="{{image}}" alt="progres-Image">
+                                            </div>
+                                            {% endfor %}
+                                        </div>
                                     </div>
                                     
-                                </b></li>
+                                </li>
                                 {% endfor %}
                             </ul>
                         

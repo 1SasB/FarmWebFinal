@@ -12,12 +12,18 @@ $("#paySpons-btn").on('click',function(){
 
         beforeSend: function(){
             console.log("about to send")
+            $("#alert-boxx").show();
             // spinnerBox.classList.add('visible')
         },
         success: function(response){
             if(response.message){
                 if(response.message == "Success"){
+                    $('#alert-boxx').html("PAYMENT SUCCESSFUL, redirecting ...")
                     window.location = "/finance"
+                }
+                else{
+                    $("#alert-boxx").hide();
+                    $("#alert-boxx1").show();
                 }
             }
             return false;

@@ -3,9 +3,12 @@
 {% block body %}
 <body>
     <form action="{{ url_for('user_profile')}}" enctype="multipart/form-data" method="post" class="py-5">
-        <div class="container">
-            <div class="row">
-
+        <div class="container profile-div ">
+            <div class="profile-head">
+                <h3><b>PROFILE</b></h3>
+            </div>
+            
+            <div class="row px-3">
                 <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
                     <label for="name">First Name <span class="text-danger">*</span></label>
                     <input value="{{data.first_name}}" type="text" name="first_name" class="form-control">
